@@ -1,0 +1,18 @@
+import telebot
+bot = telebot.TeleBot("933711121:AAFRgtAeNIW0B0QvR5kfNXCjkgl1eFk7yho")
+
+
+@bot.message_handler(content_types=['text'])
+def get2007(message):
+	answer = ''
+	message.text = message.text.lower().replace('привет', 'прифффки')
+	for i, letter in enumerate(message.text):
+		if i % 2 == 0:
+			answer += letter.upper()
+		else:
+			answer += letter
+	bot.send_message(message.chat.id, answer)
+
+
+bot.polling(none_stop=True, interval=0, timeout=20)
+
